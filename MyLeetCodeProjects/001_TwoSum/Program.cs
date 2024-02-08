@@ -27,8 +27,5 @@ namespace _001_TwoSum
         {
             new Solution();
         }
-
-
-
     }
 }
