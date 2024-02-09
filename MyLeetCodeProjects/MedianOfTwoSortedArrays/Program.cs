@@ -10,6 +10,7 @@ namespace MedianOfTwoSortedArrays
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
