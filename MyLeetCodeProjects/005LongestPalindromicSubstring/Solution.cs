@@ -8,7 +8,7 @@ namespace _005LongestPalindromicSubstring
 {
     internal class Solution
     {
-        string line = "babad";
+        string line = "s";
         public Solution()
         {
             Console.WriteLine(LongestPalindrome(line));
@@ -17,15 +17,35 @@ namespace _005LongestPalindromicSubstring
 
         public string LongestPalindrome(string s)
         {
-            string polindrom = "";
-            string[] words = s.Split(' ');
-            foreach(var word in words)
+            string palindrom = "";
+            string substring = "";
+            int runer = 0;
+            int length = s.Length;
+            if (length < 2)
+                return s;
+            for (int index = 0; index < length; index++)
             {
-                string w = word.Trim();
-                if (IsPalindrom(w) && w.Length>polindrom.Length)
-                    polindrom = w;
+                if (!char.IsLetterOrDigit(s[index]))
+                    continue;
+                for (int i = length - 1; i > index; i--)
+                {
+                    runer = s.IndexOf(s[index], i);
+                    if (runer > 0)
+                    {
+                        substring = s.Substring(index, runer - index + 1);
+                        if (IsPalindrom(substring) && substring.Length > palindrom.Length)
+                        {
+                            palindrom = substring;
+                        }
+                    }
+                    else if (palindrom.Length < s.Substring(index, 1).Length)
+                    {
+                        palindrom = s.Substring(index, 1);
+                    }
+
+                }
             }
-            return polindrom;
+            return palindrom;
         }
 
         private bool IsPalindrom(String word)
@@ -35,28 +55,16 @@ namespace _005LongestPalindromicSubstring
             {
                 int startBegin = 0;
                 int endBegin = lenght - 1;
-                for (; startBegin<endBegin;)
+                for (; startBegin < endBegin;)
                 {
-                    for (; startBegin<endBegin;)
+                    for (; startBegin < endBegin;)
                     {
-                        if (!char.IsLetterOrDigit(word[startBegin]))
-                        {
-                            startBegin++;
-                            break;
-                        }else if (!char.IsLetterOrDigit(word[endBegin]))
-                        {
-                            endBegin--;
-                            break;
-                        }
-                        else
-                        {
-                            if (! (word[startBegin] == word[endBegin]))
+                            if (!(word[startBegin] == word[endBegin]))
                             {
                                 return false;
                             }
-                                startBegin++;
-                                endBegin--;
-                        }
+                            startBegin++;
+                            endBegin--;
                     }
                 }
 
