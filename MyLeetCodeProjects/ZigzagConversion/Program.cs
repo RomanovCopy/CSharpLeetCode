@@ -39,6 +39,7 @@ namespace ZigzagConversion
     {
         static void Main(string[] args)
         {
+            new Solution();
         }
     }
 }
