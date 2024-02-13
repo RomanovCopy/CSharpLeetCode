@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Projects", "Projects\Projects.csproj", "{7F513512-84E5-4B22-B9A5-F92CD0162D1B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "009PalindromeNumber", "009PalindromeNumber\009PalindromeNumber.csproj", "{1EC76875-9C10-4B06-98C4-A56BE5E1FB64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7F513512-84E5-4B22-B9A5-F92CD0162D1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F513512-84E5-4B22-B9A5-F92CD0162D1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F513512-84E5-4B22-B9A5-F92CD0162D1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EC76875-9C10-4B06-98C4-A56BE5E1FB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EC76875-9C10-4B06-98C4-A56BE5E1FB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EC76875-9C10-4B06-98C4-A56BE5E1FB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EC76875-9C10-4B06-98C4-A56BE5E1FB64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
