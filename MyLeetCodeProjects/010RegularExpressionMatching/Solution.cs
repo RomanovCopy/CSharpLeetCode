@@ -22,7 +22,20 @@ namespace _010RegularExpressionMatching
         /// <returns></returns>
         public bool IsMatch(string s, string p)
         {
+            bool isMatch = false;
+            if (p.Contains("*"))
+            {//проверка на ноль или более повторений предшествующего элемента
 
+            }
+            else if (p.Contains("."))
+            {//проверка на любой одиночный символ
+
+            }
+            else
+            {//проверка на полное совпадение шаблона и строки
+
+            }
+            return isMatch;
         }
     }
 }
