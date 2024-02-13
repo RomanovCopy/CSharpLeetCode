@@ -10,6 +10,8 @@ namespace _010RegularExpressionMatching
     {
         public Solution()
         {
+            Console.WriteLine("aa", "a*");
+            Console.ReadKey();
         }
 
         /// <summary>
