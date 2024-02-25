@@ -7,7 +7,7 @@
     <ProjectGuid>{D10AD794-C8AA-42DC-8C2A-02D3B2F5FFB6}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>_012IntegertoRoman</RootNamespace>
-    <AssemblyName>_012IntegertoRoman</AssemblyName>
+    <AssemblyName>012IntegertoRoman</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Solution.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
