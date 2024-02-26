@@ -41,13 +41,6 @@ namespace _012IntegertoRoman
             return roman;
         }
 
-        private bool multiplier(int num, int divider, out int multiplier )
-        {
-            int res = num / divider;
-            multiplier = res > 0 ? res : -1;
-            return multiplier > 0;
-        }
-
         private string CreateRomanNumber(string roman, int m, int mult )
         {
             if ( mult < 4 )
@@ -55,8 +48,22 @@ namespace _012IntegertoRoman
                 roman += string.Concat( Enumerable.Repeat( IntToRoman[ m ] , mult ) );
             } else
             {
-                m = multipliers[ Array.IndexOf( multipliers , m )-1];
-                roman+="I"+ string.Concat( Enumerable.Repeat( IntToRoman[ m ] , 1 ) );
+                if ( roman.Length > 0 )
+                {
+
+                } else
+                {
+                    switch (m){
+                        case 1:
+                        {
+                            break;
+                        }
+                        case 10:
+                        {
+                            break;
+                        }
+                    }
+                }
             }
             return roman;
         }
