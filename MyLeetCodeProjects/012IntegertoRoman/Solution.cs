@@ -14,61 +14,46 @@ namespace _012IntegertoRoman
             {9,"IX" },{10,"X"},{50,"L"},{100,"C"},{500,"D"}, {1000,"M"}
         };
 
-        private int[ ] multipliers = { 1000 , 500 , 100 , 50 , 10 , 5, 1 };
+        private int[ ] multipliers = { 1000 , 500 , 100 , 50 , 10 , 5 , 1 };
         private string roman = "";
 
         public Solution ( )
         {
-            Console.WriteLine( NumToRoman( 44 ) );
+            Console.WriteLine( NumToRoman( 90 ) );
         }
+
 
         public string NumToRoman ( int num )
         {
-            int rest = num;
-            while ( rest > 0 )
+            while ( num > 0 )
             {
-                foreach(int m in multipliers )
+                foreach ( int num1 in multipliers )
                 {
-                    int r1 = rest / m;
-                    if ( r1 < 1 )
+                    int num2 = num / num1;
+                    if ( num2 >= 1 )
+                    {
+                        if ( num2 < 4 )
+                        {
+                            while ( num2 > 0 )
+                            {
+                                roman += IntToRoman[ num1 ];
+                                num2--;
+                                num -= num1;
+                            }
+                            NumToRoman( num );
+                        } else
+                        {
+                            int num4 = multipliers[ multipliers.ToList<int>( ).IndexOf( num1 ) - 1 ];
+                            roman += IntToRoman[ num1] +IntToRoman[ num4];
+                            NumToRoman( num );
+                        }
+                    } else
                         continue;
-                    roman = CreateRomanNumber( roman , m , r1 );
-                    rest -= m * r1;
-                    break;
-                }
-            }
 
-            return roman;
-        }
-
-        private string CreateRomanNumber(string roman, int m, int mult )
-        {
-            if ( mult < 4 )
-            {
-                roman += string.Concat( Enumerable.Repeat( IntToRoman[ m ] , mult ) );
-            } else
-            {
-                if ( roman.Length > 0 )
-                {
-
-                } else
-                {
-                    switch (m){
-                        case 1:
-                        {
-                            break;
-                        }
-                        case 10:
-                        {
-                            break;
-                        }
-                    }
                 }
             }
             return roman;
         }
-
-
 
 
     }
