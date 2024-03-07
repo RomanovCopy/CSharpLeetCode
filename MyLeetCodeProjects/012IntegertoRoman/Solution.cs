@@ -8,53 +8,68 @@ namespace _012IntegertoRoman
 {
     internal class Solution
     {
-        private Dictionary<int , String> IntToRoman = new Dictionary<int , string>( )
+        private readonly Dictionary<int , string> romanNumerals = new Dictionary<int , string>
         {
-            {1,"I" }, {2, "II" }, {3,"III" },{4,"IV"},{5,"V"},{6,"VI"},{7,"VII"},{8,"VIII"},
-            {9,"IX" },{10,"X"},{50,"L"},{100,"C"},{500,"D"}, {1000,"M"}
+            { 1000, "M" }, { 900, "CM" },{ 500, "D" },{ 400, "CD" },{ 100, "C" },{ 90, "XC" },
+            { 50, "L" },{ 40, "XL" },{ 10, "X" },{ 9, "IX" },{ 5, "V" },{ 4, "IV" },{ 1, "I" }
         };
-
-        private int[ ] multipliers = { 1000 , 500 , 100 , 50 , 10 , 5 , 1 };
-        private string roman = "";
 
         public Solution ( )
         {
-            Console.WriteLine( NumToRoman( 90 ) );
+            Console.WriteLine( IntToRoman( 2024 ) );
+            Console.WriteLine( IntToRoman2( 2024 ) );
         }
 
 
-        public string NumToRoman ( int num )
-        {
-            while ( num > 0 )
-            {
-                foreach ( int num1 in multipliers )
-                {
-                    int num2 = num / num1;
-                    if ( num2 >= 1 )
-                    {
-                        if ( num2 < 4 )
-                        {
-                            while ( num2 > 0 )
-                            {
-                                roman += IntToRoman[ num1 ];
-                                num2--;
-                                num -= num1;
-                            }
-                            NumToRoman( num );
-                        } else
-                        {
-                            int num4 = multipliers[ multipliers.ToList<int>( ).IndexOf( num1 ) - 1 ];
-                            roman += IntToRoman[ num1] +IntToRoman[ num4];
-                            NumToRoman( num );
-                        }
-                    } else
-                        continue;
 
+        private string IntToRoman ( int num )
+        {
+            if ( num < 1 )
+                return "";
+            if ( num >= 1000 )
+                return "M" + IntToRoman( num - 1000 );
+            if ( num >= 900 )
+                return "CM" + IntToRoman( num - 900 );
+            if ( num >= 500 )
+                return "D" + IntToRoman( num - 500 );
+            if ( num >= 400 )
+                return "CD" + IntToRoman( num - 400 );
+            if ( num >= 100 )
+                return "C" + IntToRoman( num - 100 );
+            if ( num >= 90 )
+                return "XC" + IntToRoman( num - 90 );
+            if ( num >= 50 )
+                return "L" + IntToRoman( num - 50 );
+            if ( num >= 40 )
+                return "XL" + IntToRoman( num - 40 );
+            if ( num >= 10 )
+                return "X" + IntToRoman( num - 10 );
+            if ( num >= 9 )
+                return "IX" + IntToRoman( num - 9 );
+            if ( num >= 5 )
+                return "V" + IntToRoman( num - 5 );
+            if ( num >= 4 )
+                return "IV" + IntToRoman( num - 4 );
+            if ( num >= 1 )
+                return "I" + IntToRoman( num - 1 );
+            throw new ArgumentOutOfRangeException( "Ошибка ввода. Число должно быть в интервале 1 до 3999" );
+        }
+
+
+        private string IntToRoman2 ( int num )
+        {
+            if ( num < 4000 || num > 0 )
+            {
+                foreach ( var entry in romanNumerals )
+                {
+                    if ( num >= entry.Key )
+                    {
+                        return entry.Value + IntToRoman2( num - entry.Key );
+                    }
                 }
             }
-            return roman;
+            return "";
         }
-
-
     }
+
 }
