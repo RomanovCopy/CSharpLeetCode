@@ -10,13 +10,7 @@ namespace _014LongestCommonPrefix
     {
         string[ ] array =
         {
-            "apple","apricot","apt","application","arch","architect","argue","argument","articulate","artistic"
-        };
-
-        char[ ] alphabetArray = new char[ ]
-        {
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+            "ab", "a"
         };
 
         public Solution ( )
@@ -28,23 +22,33 @@ namespace _014LongestCommonPrefix
 
         public string LongestCommonPrefix ( string[ ] strs )
         {
+            if ( strs.Length == 1 )
+                return strs[ 0 ];
             string max = "";
-            var list = strs.ToList( );
-            int i, j, k = 0;
-            for( i=0 ;i<list.Count ;i++ )
+            string current = "";
+            int minLength = strs[0].Length;
+            var set = new HashSet<string>( strs.Length );
+            foreach(var item in strs )
             {
-                for( j=i+1 ;j<list.Count ;j++ )
-                {
-                    for(k=0 ; k < Math.Min( list[i].Length , list[j].Length ) ;k++ )
-                    {
-                        if ( !( list[ i ][ k ] == list[ j ][k]) )
-                        {
-                            break;
-                        }
-                    }
-                }
+                if ( item.Length < minLength )
+                    minLength = item.Length;
             }
-
+            for(int i=1 ;i<=minLength ;i++ )//перебор символов в словах
+            {
+                for(int j=0 ;j<strs.Length ;j++ )//перебор слов
+                {
+                    current = strs[ j ].Substring( 0 , i );
+                    set.Add( current );
+                }
+                if ( set.Count > 1 )
+                {
+                    max = current.Remove( current.Length - 1 );
+                    break;
+                } else
+                {
+                    max = current;
+                    set.Clear( ); }
+            }
             return max;
         }
     }
